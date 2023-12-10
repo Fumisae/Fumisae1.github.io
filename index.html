@@ -1,22 +1,44 @@
-<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-<script>
-  AFRAME.registerComponent("mylink", {
-    init: function() {
-      this.el.addEventListener("click", (e) => {
-        window.location = this.data.href;
-      })
-    }
-  })
-</script>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Cursor Handler - A-Frame School</title>
+    <meta name="description" content="Cursor Handler - A-Frame School">
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script>
+      AFRAME.registerComponent('handle-events', {
+        init: function () {
+          var el = this.el;  // <a-box>
+          el.addEventListener('mouseenter', function () {
+            el.setAttribute('color', '#24CAFF');  
+          });
+          el.addEventListener('mouseleave', function () {
+            el.setAttribute('color', '#EF2D5E');  
+          });
+          el.addEventListener('click', function () {
+            el.setAttribute('color', '#6cff00'); 
+          });
+        } 
+      });
+    </script>
+  </head>
+  <body>
+    <a-scene>
+        <a-torus-knot color="#EF2D5E" radius="0.8" radius-tubular="0.145" p="2" q="3" position="0 1 -4" handle-events="" material="" geometry=""
+                      animation="easing: linear; property: rotation; dur: 5000; to: 360 360 360; repeat: indefinite; loop: true">
+            <a-link href="http://127.0.0.1:5500/fumisae1/index.html" geometry="primitive: box; skipCache: true" material="shader: portal; side: double; visible: false" link=""></a-link>
+        </a-torus-knot>
 
-<a-scene cursor="rayOrigin: mouse">
-  <a-text color="black" position="1 1.6 -2" value="Click the text"
-          mylink="href: https://schatzkin.com;"></a-text>
-  <a-entity position="-1 1.6 -2" 
-            link="highlighted: true; 
-                  highlightedColor:#000000; backgroundColor: red; 
-                  href: https://schatzkin.com; titleColor: black; 
-                  title: click the image below.;
-                  image: https://i.imgur.com/wjobVTN.jpg;
-                  visualAspectEnabled: true"></a-entity>
-</a-scene>
+      <a-box color="#EF2D5E" position="3 1 -4" handle-events>
+        <a-link href="https://google.com"></a-link>
+      </a-box>
+      
+      
+      <a-camera><a-cursor></a-cursor></a-camera>
+      <a-sky color="#333"></a-sky>
+      <a-plane color="#000" rotation="-90 0 0" width="500" height="500"></a-plane>
+
+
+    </a-scene>
+  </body>
+</html>
