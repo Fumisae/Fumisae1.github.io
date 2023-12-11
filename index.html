@@ -5,16 +5,13 @@
     <title>Cursor Handler - A-Frame School</title>
     <meta name="description" content="Cursor Handler - A-Frame School">
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-raytrace-component/dist/aframe-raytrace-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+
     <script>
       AFRAME.registerComponent('handle-events', {
         init: function () {
-          var el = this.el;  // <a-box>
-          el.addEventListener('mouseenter', function () {
-            el.setAttribute('color', '#24CAFF');  
-          });
-          el.addEventListener('mouseleave', function () {
-            el.setAttribute('color', '#EF2D5E');  
-          });
+          var el = this.el;
           el.addEventListener('click', function () {
             el.setAttribute('color', '#6cff00'); 
           });
@@ -24,25 +21,41 @@
   </head>
   <body>
     <a-scene>
-        <a-torus-knot src="Assets/MOSHED-2023-12-10-18-13-55.jpg" color="#EF2D5E" radius="0.8" radius-tubular="0.145" p="2" q="3" position="0 1 -6" handle-events="" material="" geometry=""
-                      animation="easing: linear; property: rotation; dur: 5000; to: 0 360 360; repeat: indefinite; loop: true">
+      <a-assests><img id="aerial-rocks" src="Assets/aerial_rocks_02_diff_4k.jpg">
+      </a-assests>
+      
+        <a-torus-knot src="Assets/MOSHED-2023-12-10-18-13-55.jpg" color="#ff8f00" radius="0.8" radius-tubular="0.145" p="2" q="3" position="0 1 -7" handle-events="" material="" geometry=""
+                      animation="easing: linear; property: rotation; dur: 5000; to: 0 360 1080; repeat: indefinite; loop: true">
             <a-link href="http://127.0.0.1:5500/fumisae1/index.html" geometry="primitive: box; skipCache: true" material="shader: portal; side: double; visible: false" link=""></a-link>
         </a-torus-knot>
 
-        <a-torus-knot src="Assets/MOSHED-2023-12-10-18-13-55.jpg" color="#EF2D5E" radius="0.8" radius-tubular="0.145" p="2" q="3" position="4 1 -6" handle-events="" material="" geometry=""
-        animation="easing: linear; property: rotation; dur: 5000; to: -360 0 360; repeat: indefinite; loop: true">
+        <a-torus-knot src="Assets/MOSHED-2023-12-10-18-13-55.jpg" color="#8bff00" radius="0.8" radius-tubular="0.145" p="2" q="3" position="4 1 -7" handle-events="" material="" geometry=""
+        animation="easing: linear; property: rotation; dur: 5000; to: -1080 0 360; repeat: indefinite; loop: true">
+            <a-link href="https://soundcloud.com/fumiyakawase" geometry="primitive: box; skipCache: true" material="shader: portal; side: double; visible: false" link=""></a-link>
+        </a-torus-knot>
+
+        <a-torus-knot src="Assets/MOSHED-2023-12-10-18-13-55.jpg" color="#00ffd8" radius="0.8" radius-tubular="0.145" p="2" q="3" position="-4 1 -7" handle-events="" material="" geometry=""
+        animation="easing: linear; property: rotation; dur: 5000; to: 360 -1080 0; repeat: indefinite; loop: true">
             <a-link href="http://127.0.0.1:5500/fumisae1/index.html" geometry="primitive: box; skipCache: true" material="shader: portal; side: double; visible: false" link=""></a-link>
         </a-torus-knot>
 
-        <a-torus-knot src="Assets/MOSHED-2023-12-10-18-13-55.jpg" color="#EF2D5E" radius="0.8" radius-tubular="0.145" p="2" q="3" position="-4 1 -6" handle-events="" material="" geometry=""
-        animation="easing: linear; property: rotation; dur: 5000; to: 360 -360 0; repeat: indefinite; loop: true">
+        <a-torus-knot src="Assets/MOSHED-2023-12-10-18-13-55.jpg" color="#ff00d8" radius="0.8" radius-tubular="0.145" p="2" q="3" position="-8 1 -7" handle-events="" material="" geometry=""
+        animation="easing: linear; property: rotation; dur: 5000; to: 360 0 -1080; repeat: indefinite; loop: true">
             <a-link href="http://127.0.0.1:5500/fumisae1/index.html" geometry="primitive: box; skipCache: true" material="shader: portal; side: double; visible: false" link=""></a-link>
         </a-torus-knot>
-      
-      
+
+        <a-torus-knot src="Assets/MOSHED-2023-12-10-18-13-55.jpg" color="#f7ff00" radius="0.8" radius-tubular="0.145" p="2" q="3" position="8 1 -7" handle-events="" material="" geometry=""
+        animation="easing: linear; property: rotation; dur: 5000; to: 360 0 1080; repeat: indefinite; loop: true">
+            <a-link href="http://127.0.0.1:5500/fumisae1/index.html" geometry="primitive: box; skipCache: true" material="shader: portal; side: double; visible: false" link=""></a-link>
+        </a-torus-knot>
+
+        //a-entity id="lightSphere" geometry="primitive: sphere; radius: 0.2" material="shader: flat" light="type: point; color: #FFF" position="-4 3 0"
+                animation="property: position; to: 4 2.8 -4; dir: alternate; loop: true"></a-entity>
+
+      <a-box src="#aerial-rocks" position="2 0.5 -4"></a-box>
+
       <a-camera><a-cursor></a-cursor></a-camera>
       <a-sky src="Assets/MOSHED-2023-12-10-18-26-3.jpg" material=""></a-sky>
-
 
     </a-scene>
   </body>
